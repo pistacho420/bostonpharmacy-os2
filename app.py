@@ -7,21 +7,8 @@ import random
 # =====================================================================
 st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
 
-def set_bg_image(image_file):
-    try:
-        with open(image_file, "rb") as f:
-            img_data = f.read()
-        b64_encoded = base64.b64encode(img_data).decode()
-        
-        def set_bg_image():
-    # Enlace directo de la imagen optimizada en alta definición para tu simulador
-    u# =====================================================================
-# 1. CONFIGURACIÓN DE LA PÁGINA E IMAGEN DE FONDO
-# =====================================================================
-st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
-
 def set_bg_image():
-    # Asegúrate de que las líneas de aquí abajo tengan 4 espacios de sangría
+    # URL directa de imagen de laboratorio clínico optimizada de alta calidad
     url_imagen = "https://unsplash.com"
     
     style = f"""
@@ -43,23 +30,11 @@ def set_bg_image():
     """
     st.markdown(style, unsafe_allowed_html=True)
 
-# Esta línea va pegada a la izquierda (sin espacios) porque está fuera de la función
+# Ejecutar la inyección del fondo de pantalla
 set_bg_image()
-
-    st.markdown(style, unsafe_allowed_html=True)
-
-# Cambia la llamada eliminando el nombre del archivo:
-set_bg_image()
-
-        
-        st.markdown(style, unsafe_allowed_html=True)
-    except FileNotFoundError:
-        st.sidebar.warning("⚠️ Guarda 'fondo_simulador.png' junto a tu script para ver el fondo.")
-
-set_bg_image("fondo_simulador.png")
 
 # =====================================================================
-# 2. BANCO DE DATOS INTEGRADO (ESTRUCTURAS CERRADAS CORRECTAMENTE)
+# 2. BANCO DE DATOS INTEGRADO (10 EJERCICIOS POR SECCIÓN)
 # =====================================================================
 ejercicios_masspat = [
     {
@@ -202,7 +177,7 @@ def cambiar_ejercicio_pos():
     st.session_state.id_pos = random.randint(0, 9)
 
 # =====================================================================
-# 4. MENÚ EN LA BARRA LATERAL
+# 4. MENÚ EN LA BARRA LATERAL (CONEXIÓN EXACTA)
 # =====================================================================
 opcion = st.sidebar.selectbox(
     "Selecciona un Módulo del Simulador:",
@@ -213,6 +188,4 @@ opcion = st.sidebar.selectbox(
         "4. Patient POS & Copay"
     ]
 )
-
-    
 
