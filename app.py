@@ -1,38 +1,41 @@
 import streamlit as st
-import base64
 import random
 
 # =====================================================================
-# 1. CONFIGURACIÓN DE LA PÁGINA E IMAGEN DE FONDO
+# 1. CONFIGURACIÓN DE LA PÁGINA E IMAGEN DE FONDO (MÉTODO SEGURO)
 # =====================================================================
 st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
 
 def set_bg_image():
-    # URL directa de imagen de laboratorio clínico optimizada de alta calidad
+    # URL directa de la imagen de laboratorio clínico optimizada
     url_imagen = "https://unsplash.com"
     
-    # Se eliminó la 'f' inicial para evitar el conflicto de llaves en Streamlit
-    style = """
+    # Usamos st.html en lugar de st.markdown para inyectar CSS limpio de forma nativa y segura
+    st.html(f"""
     <style>
-    .stApp {
-        background-image: url("https://unsplash.com");
+    [data-testid="stApp"] {{
+        background-image: url("{url_imagen}");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-    }
-    .block-container {
-        background-color: rgba(17, 22, 27, 0.90);
+    }}
+    [data-testid="stHeader"] {{
+        background: transparent;
+    }}
+    .main .block-container {{
+        background-color: rgba(17, 22, 27, 0.93) !important;
         border-radius: 15px;
         padding: 30px !important;
-        margin-top: 20px;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-    }
+        margin-top: 50px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.7);
+    }}
     </style>
-    """
-    st.markdown(style, unsafe_allowed_html=True)
+    """)
 
-# Ejecutar la inyección del fondo de pantalla
+# Ejecutar la inyección del fondo de pantalla de forma segura
 set_bg_image()
+
+
 
 
 # =====================================================================
