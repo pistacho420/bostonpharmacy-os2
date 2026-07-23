@@ -188,4 +188,262 @@ opcion = st.sidebar.selectbox(
 # 5. LÓGICA DE RENDERIZADO POR MÓDULOS
 # =====================================================================
 
+# ==============================
+# MÓDULO 1 DATA ENTRY
+# ==============================
+
+if opcion == "1. Patient Intake & Prescription Entry":
+
+    st.header("📝 Patient Intake & Prescription Entry")
+
+    st.image(
+        "https://images.unsplash.com/photo-1580281657527-47f249e8f3df",
+        caption="Electronic Prescription System",
+        use_container_width=True
+    )
+
+    st.info(
+        "Caso de práctica: Recibir, interpretar e ingresar una receta electrónica."
+    )
+
+
+    receta = {
+        "Paciente": "Maria Johnson",
+        "DOB": "05/12/1985",
+        "Doctor": "Dr. Robert Williams",
+        "Medicamento": "Amoxicillin 500mg",
+        "SIG": "Take 1 capsule by mouth three times daily",
+        "Quantity": "30 capsules"
+    }
+
+
+    for clave, valor in receta.items():
+        st.write(f"**{clave}:** {valor}")
+
+
+    respuesta = st.text_input(
+        "¿Cuántos días de suministro tiene esta receta?"
+    )
+
+
+    if st.button("Verificar Data Entry"):
+
+        if respuesta == "10":
+            st.success(
+                "✅ Correcto. 30 cápsulas / 3 cápsulas al día = 10 días."
+            )
+
+        else:
+            st.error(
+                "❌ Incorrecto. El Days Supply correcto es 10 días."
+            )
+
+
+# ==============================
+# MÓDULO 2 INVENTORY
+# ==============================
+
+
+elif opcion == "2. Drug Lookup & Inventory":
+
+    st.header("📦 Drug Lookup & Inventory")
+
+    st.image(
+        "https://images.unsplash.com/photo-1587854692152-cbe660dbde88",
+        caption="Pharmacy Inventory",
+        use_container_width=True
+    )
+
+
+    st.info(
+        "Caso: El sistema muestra bajo inventario de un medicamento."
+    )
+
+
+    medicamento = st.selectbox(
+        "Medicamento:",
+        [
+            "Metformin 500mg",
+            "Lisinopril 10mg",
+            "Atorvastatin 20mg"
+        ]
+    )
+
+
+    inventario = st.number_input(
+        "Cantidad disponible:",
+        min_value=0,
+        value=5
+    )
+
+
+    if st.button("Revisar Inventario"):
+
+        if inventario < 10:
+
+            st.warning(
+                f"⚠️ {medicamento} necesita orden de compra."
+            )
+
+        else:
+
+            st.success(
+                "✅ Inventario suficiente."
+            )
+
+
+# ==============================
+# MÓDULO 3 MASS PAT
+# ==============================
+
+
+elif opcion == "3. Controlled Substances (MassPAT)":
+
+    st.header("🔒 Controlled Substances - MassPAT")
+
+
+    st.image(
+        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae",
+        caption="Controlled Substance Monitoring",
+        use_container_width=True
+    )
+
+
+    caso_actual = ejercicios_masspat[
+        st.session_state.id_masspat
+    ]
+
+
+    st.subheader(
+        caso_actual["caso"]
+    )
+
+
+    st.write(
+        caso_actual["pregunta"]
+    )
+
+
+    respuesta = st.radio(
+        "Seleccione la respuesta:",
+        caso_actual["opciones"]
+    )
+
+
+    if st.button("Evaluar respuesta MassPAT"):
+
+        if respuesta == caso_actual["correcta"]:
+
+            st.success(
+                "✅ Respuesta correcta"
+            )
+
+            st.info(
+                caso_actual["explicacion"]
+            )
+
+        else:
+
+            st.error(
+                "❌ Respuesta incorrecta"
+            )
+
+            st.info(
+                caso_actual["explicacion"]
+            )
+
+
+    if st.button("🔄 Nuevo Caso MassPAT"):
+
+        cambiar_ejercicio_masspat()
+
+        st.rerun()
+
+
+
+# ==============================
+# MÓDULO 4 POS
+# ==============================
+
+
+elif opcion == "4. Patient POS & Copay":
+
+
+    st.header("💳 Patient POS & Copay")
+
+
+    st.image(
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+        caption="Patient Checkout",
+        use_container_width=True
+    )
+
+
+    caso = ejercicios_pos[
+        st.session_state.id_pos
+    ]
+
+
+    st.info(
+        caso["concepto"]
+    )
+
+
+    st.write(
+        f"💊 Precio medicamento: ${caso['costo']}"
+    )
+
+
+    st.write(
+        f"🏥 Seguro cubre: {caso['cobertura']*100}%"
+    )
+
+
+    pago = st.number_input(
+        "Ingrese copago del paciente:",
+        min_value=0.0,
+        step=0.01
+    )
+
+
+    if st.button("Calcular Copago"):
+
+
+        correcto = round(
+            caso["costo"] *
+            (1-caso["cobertura"]),
+            2
+        )
+
+
+        if pago == correcto:
+
+            st.success(
+                f"✅ Correcto. Copago ${correcto}"
+            )
+
+        else:
+
+            st.error(
+                f"❌ Incorrecto. Debe pagar ${correcto}"
+            )
+
+
+    if st.button("🔄 Nuevo Caso POS"):
+
+        cambiar_ejercicio_pos()
+
+        st.rerun()
+
+
+
+# =====================================================================
+# PIE DE PÁGINA
+# =====================================================================
+
+st.divider()
+
+st.caption(
+    "BostonPharmacy-OS v2026 | Pharmacy Technician Training Simulator | Massachusetts"
+)
 
