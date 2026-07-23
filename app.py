@@ -11,27 +11,29 @@ def set_bg_image():
     # URL directa de imagen de laboratorio clínico optimizada de alta calidad
     url_imagen = "https://unsplash.com"
     
-    style = f"""
+    # Se eliminó la 'f' inicial para evitar el conflicto de llaves en Streamlit
+    style = """
     <style>
-    .stApp {{
-        background-image: url("{url_imagen}");
+    .stApp {
+        background-image: url("https://unsplash.com");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-    }}
-    .block-container {{
+    }
+    .block-container {
         background-color: rgba(17, 22, 27, 0.90);
         border-radius: 15px;
         padding: 30px !important;
         margin-top: 20px;
         box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-    }}
+    }
     </style>
     """
     st.markdown(style, unsafe_allowed_html=True)
 
 # Ejecutar la inyección del fondo de pantalla
 set_bg_image()
+
 
 # =====================================================================
 # 2. BANCO DE DATOS INTEGRADO (10 EJERCICIOS POR SECCIÓN)
