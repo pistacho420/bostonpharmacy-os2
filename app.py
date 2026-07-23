@@ -1,18 +1,16 @@
 import streamlit as st
 # Configuración de la página web local
-st.set_page_config(page_title="BostonPharmacy-OS", page_icon="💊", st.markdown("""
+st.set_page_config(page_title="BostonPharmacy-OS", page_icon="💊", layout="centered")
+
+# Fondo personalizado de la app
+st.markdown("""
 <style>
 .stApp {
-    background-image: url("URL_DE_TU_IMAGEN");
-    background-size: cover;
-}
-[data-testid="stAppViewContainer"] > .main {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    padding: 20px;
+    background-color: #f0f4f8;
 }
 </style>
-""", unsafe_allow_html=True)")
+""", unsafe_allow_html=True)
+
 st.title("💊 BostonPharmacy-OS v2026")
 st.subheader("Simulador Técnico de Farmacia - Boston, MA")
 st.write("---")
