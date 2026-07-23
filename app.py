@@ -6,7 +6,7 @@ st.set_page_config(page_title="BostonPharmacy-OS", page_icon="💊", layout="cen
 st.markdown("""
 <style>
 .stApp {
-    background-image: url("https://images.unsplash.com/photo-1587854692152-cbe660dbde88");
+    background-image: url("C:\Users\Pistacho\Downloads");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
