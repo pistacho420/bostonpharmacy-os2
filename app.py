@@ -181,6 +181,7 @@ def cambiar_ejercicio_pos():
 opcion = st.sidebar.selectbox(
     "Selecciona un Módulo del Simulador:",
     [
+    )
         "1. Patient Intake & Prescription Entry",
 
 
