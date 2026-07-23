@@ -6,7 +6,10 @@ st.set_page_config(page_title="BostonPharmacy-OS", page_icon="💊", layout="cen
 st.markdown("""
 <style>
 .stApp {
-    background-color: #f0f4f8;
+    background-image: url("https://images.unsplash.com/photo-1587854692152-cbe660dbde88");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 </style>
 """, unsafe_allow_html=True)
