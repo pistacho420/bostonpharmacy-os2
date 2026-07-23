@@ -7,10 +7,8 @@ import random
 st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
 
 def set_bg_image():
-    # URL directa de la imagen de laboratorio clínico optimizada para el simulador
     url_imagen = "https://unsplash.com"
     
-    # CSS simplificado y nativo: Asigna el fondo directamente a la aplicación sin romper selectores estructurales
     st.html(f"""
     <style>
     .stApp {{
@@ -19,7 +17,6 @@ def set_bg_image():
         background-position: center;
         background-attachment: fixed;
     }}
-    /* Diseña un panel oscuro semitransparente limpio nativo del tema oscuro de Streamlit */
     div.stMainBlockContainer {{
         background-color: rgba(17, 22, 27, 0.95) !important;
         border-radius: 12px;
@@ -29,7 +26,6 @@ def set_bg_image():
     </style>
     """)
 
-# Inicializar fondo compatible
 set_bg_image()
 
 # =====================================================================
@@ -181,8 +177,15 @@ def cambiar_ejercicio_pos():
 opcion = st.sidebar.selectbox(
     "Selecciona un Módulo del Simulador:",
     [
-    )
         "1. Patient Intake & Prescription Entry",
+        "2. Drug Lookup & Inventory",
+        "3. Controlled Substances (MassPAT)",
+        "4. Patient POS & Copay"
+    ]
+)
 
+# =====================================================================
+# 5. LÓGICA DE RENDERIZADO POR MÓDULOS
+# =====================================================================
 
 
