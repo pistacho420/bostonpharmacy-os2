@@ -13,22 +13,32 @@ def set_bg_image(image_file):
             img_data = f.read()
         b64_encoded = base64.b64encode(img_data).decode()
         
-        style = f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/png;base64,{b64_encoded}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }}
-        .block-container {{
-            background-color: rgba(17, 22, 27, 0.90);
-            border-radius: 15px;
-            padding: 30px !important;
-            margin-top: 20px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-        }}
-        </style>
+        def set_bg_image():
+    # Enlace directo de la imagen optimizada en alta definición para tu simulador
+    url_imagen = "https://unsplash.com"
+    
+    style = f"""
+    <style>
+    .stApp {{
+        background-image: url("{url_imagen}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    .block-container {{
+        background-color: rgba(17, 22, 27, 0.90);
+        border-radius: 15px;
+        padding: 30px !important;
+        margin-top: 20px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    }}
+    </style>
+    """
+    st.markdown(style, unsafe_allowed_html=True)
+
+# Cambia la llamada eliminando el nombre del archivo:
+set_bg_image()
+
         """
         st.markdown(style, unsafe_allowed_html=True)
     except FileNotFoundError:
