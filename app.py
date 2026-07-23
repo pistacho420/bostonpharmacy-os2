@@ -39,7 +39,7 @@ def set_bg_image(image_file):
 # Cambia la llamada eliminando el nombre del archivo:
 set_bg_image()
 
-        """
+        
         st.markdown(style, unsafe_allowed_html=True)
     except FileNotFoundError:
         st.sidebar.warning("⚠️ Guarda 'fondo_simulador.png' junto a tu script para ver el fondo.")
