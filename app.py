@@ -6,7 +6,8 @@ st.set_page_config(page_title="BostonPharmacy-OS", page_icon="💊", layout="cen
 st.markdown("""
 <style>
 .stApp {
-    background-image: url("C:\Users\Pistacho\Downloads");
+    background-image: url("https://www.google.com/imgres?q=imagen%20de%20fondo%20para%20programa%20de%20tecnico%20de%20farmacia&imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fz%2Fd%25C3%25ADa-del-t%25C3%25A9cnico-farmac%25C3%25A9utico-nacional-concepto-de-vacaciones-plantilla-para-cartel-carteles-fondo-con-inscripci%25C3%25B3n-texto-231172564.jpg&imgrefurl=https%3A%2F%2Fes.dreamstime.com%2Fillustration%2Fd%25C3%25ADa-del-t%25C3%25A9cnico-de-farmacia.html&docid=Up-oWXJSGzKSpM&tbnid=t-LMeYeevMpBzM&vet=12ahUKEwiIs_OMs-mVAxXxF1kFHXryOjIQnPAOegUIhQEQAA..i&w=1600&h=1690&hcb=2&ved=2ahUKEwiIs_OMs-mVAxXxF1kFHXryOjIQnPAOegUIhQEQAA");
+    background-size: cover");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
