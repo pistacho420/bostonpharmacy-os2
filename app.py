@@ -54,5 +54,3 @@ elif opcion == "2. Insurance Billing (MassHealth)":
 # Nota al pie sobre leyes
 st.write("---")
 st.caption("Cumple con normativas HIPAA y el Massachusetts Board of Registration in Pharmacy.")
-
-    
