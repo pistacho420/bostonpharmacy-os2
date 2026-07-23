@@ -185,4 +185,12 @@ def cambiar_ejercicio_pos():
 opcion = st.sidebar.selectbox(
     "Selecciona un Módulo del Simulador:",
     [
+        "1. Patient Intake & Prescription Entry",
+        "2. Drug Lookup & Inventory",
+        "3. Controlled Substances (MassPAT)",
+        "4. Patient POS & Copay"
+    ]
+)
+
+    
 
