@@ -2,52 +2,34 @@ import streamlit as st
 import random
 
 # =====================================================================
-# 1. CONFIGURACIÓN DE LA PÁGINA E INYECCIÓN SEGURA DE FONDO
+# 1. CONFIGURACIÓN COMPATIBLE DE LA PÁGINA E IMAGEN DE FONDO
 # =====================================================================
 st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
 
 def set_bg_image():
-    # URL directa de la imagen de laboratorio clínico optimizada
+    # URL directa de la imagen de laboratorio clínico optimizada para el simulador
     url_imagen = "https://unsplash.com"
     
-    # CSS Corregido: Mueve el fondo hacia atrás (z-index: -1) para que no tape los botones
+    # CSS simplificado y nativo: Asigna el fondo directamente a la aplicación sin romper selectores estructurales
     st.html(f"""
     <style>
-    [data-testid="stApp"]::before {{
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+    .stApp {{
         background-image: url("{url_imagen}");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        z-index: -1; /* Envía la imagen al fondo absoluto */
     }}
-    [data-testid="stHeader"] {{
-        background: transparent;
-    }}
-    .main .block-container {{
-        background-color: rgba(17, 22, 27, 0.94) !important;
-        border-radius: 15px;
-        padding: 35px !important;
-        margin-top: 50px;
-        box-shadow: 0px 4px 25px rgba(0,0,0,0.8);
-        z-index: 1; /* Fuerza a que los cuestionarios y textos floten arriba */
-    }}
-    /* Asegurar visibilidad de fuentes del sistema en modo oscuro */
-    h1, h2, h3, p, span, label {{
-        color: #FFFFFF !important;
-    }}
-    .stMarkdown p {{
-        color: #E0E0E0 !important;
+    /* Diseña un panel oscuro semitransparente limpio nativo del tema oscuro de Streamlit */
+    div.stMainBlockContainer {{
+        background-color: rgba(17, 22, 27, 0.95) !important;
+        border-radius: 12px;
+        padding: 30px !important;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
     }}
     </style>
     """)
 
-# Renderizar el fondo sin bloquear componentes
+# Inicializar fondo compatible
 set_bg_image()
 
 # =====================================================================
@@ -186,6 +168,20 @@ if "id_masspat" not in st.session_state:
     st.session_state.id_masspat = random.randint(0, 9)
 if "id_pos" not in st.session_state:
     st.session_state.id_pos = random.randint(0, 9)
+
+def cambiar_ejercicio_masspat():
+    st.session_state.id_masspat = random.randint(0, 9)
+
+def cambiar_ejercicio_pos():
+    st.session_state.id_pos = random.randint(0, 9)
+
+# =====================================================================
+# 4. MENÚ EN LA BARRA LATERAL
+# =====================================================================
+opcion = st.sidebar.selectbox(
+    "Selecciona un Módulo del Simulador:",
+    [
+        "1. Patient Intake & Prescription Entry",
 
 
 
