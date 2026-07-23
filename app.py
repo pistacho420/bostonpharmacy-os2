@@ -15,6 +15,13 @@ def set_bg_image(image_file):
         
         def set_bg_image():
     # Enlace directo de la imagen optimizada en alta definición para tu simulador
+    u# =====================================================================
+# 1. CONFIGURACIÓN DE LA PÁGINA E IMAGEN DE FONDO
+# =====================================================================
+st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
+
+def set_bg_image():
+    # Asegúrate de que las líneas de aquí abajo tengan 4 espacios de sangría
     url_imagen = "https://unsplash.com"
     
     style = f"""
@@ -34,6 +41,11 @@ def set_bg_image(image_file):
     }}
     </style>
     """
+    st.markdown(style, unsafe_allowed_html=True)
+
+# Esta línea va pegada a la izquierda (sin espacios) porque está fuera de la función
+set_bg_image()
+
     st.markdown(style, unsafe_allowed_html=True)
 
 # Cambia la llamada eliminando el nombre del archivo:
