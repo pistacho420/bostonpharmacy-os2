@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 # =====================================================================
-# 1. CONFIGURACIÓN DE LA PÁGINA E IMAGEN DE FONDO (MÉTODO SEGURO)
+# 1. CONFIGURACIÓN DE LA PÁGINA E INYECCIÓN SEGURA DE FONDO
 # =====================================================================
 st.set_page_config(page_title="Simulador de Técnico de Farmacia", layout="wide")
 
@@ -10,33 +10,45 @@ def set_bg_image():
     # URL directa de la imagen de laboratorio clínico optimizada
     url_imagen = "https://unsplash.com"
     
-    # Usamos st.html en lugar de st.markdown para inyectar CSS limpio de forma nativa y segura
+    # CSS Corregido: Mueve el fondo hacia atrás (z-index: -1) para que no tape los botones
     st.html(f"""
     <style>
-    [data-testid="stApp"] {{
+    [data-testid="stApp"]::before {{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         background-image: url("{url_imagen}");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        z-index: -1; /* Envía la imagen al fondo absoluto */
     }}
     [data-testid="stHeader"] {{
         background: transparent;
     }}
     .main .block-container {{
-        background-color: rgba(17, 22, 27, 0.93) !important;
+        background-color: rgba(17, 22, 27, 0.94) !important;
         border-radius: 15px;
-        padding: 30px !important;
+        padding: 35px !important;
         margin-top: 50px;
-        box-shadow: 0px 4px 20px rgba(0,0,0,0.7);
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.8);
+        z-index: 1; /* Fuerza a que los cuestionarios y textos floten arriba */
+    }}
+    /* Asegurar visibilidad de fuentes del sistema en modo oscuro */
+    h1, h2, h3, p, span, label {{
+        color: #FFFFFF !important;
+    }}
+    .stMarkdown p {{
+        color: #E0E0E0 !important;
     }}
     </style>
     """)
 
-# Ejecutar la inyección del fondo de pantalla de forma segura
+# Renderizar el fondo sin bloquear componentes
 set_bg_image()
-
-
-
 
 # =====================================================================
 # 2. BANCO DE DATOS INTEGRADO (10 EJERCICIOS POR SECCIÓN)
@@ -175,22 +187,5 @@ if "id_masspat" not in st.session_state:
 if "id_pos" not in st.session_state:
     st.session_state.id_pos = random.randint(0, 9)
 
-def cambiar_ejercicio_masspat():
-    st.session_state.id_masspat = random.randint(0, 9)
 
-def cambiar_ejercicio_pos():
-    st.session_state.id_pos = random.randint(0, 9)
-
-# =====================================================================
-# 4. MENÚ EN LA BARRA LATERAL (CONEXIÓN EXACTA)
-# =====================================================================
-opcion = st.sidebar.selectbox(
-    "Selecciona un Módulo del Simulador:",
-    [
-        "1. Patient Intake & Prescription Entry",
-        "2. Drug Lookup & Inventory",
-        "3. Controlled Substances (MassPAT)",
-        "4. Patient POS & Copay"
-    ]
-)
 
